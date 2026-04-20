@@ -5,7 +5,7 @@ Venue Pulse is a lightweight, real-time crowd management system for large-scale 
 
 ---
 
-## 🏆 Hackathon Evaluation Guide
+## 🏆Evaluation Guide
 
 This project was built from the ground up to excel in key AI-evaluated metrics:
 
