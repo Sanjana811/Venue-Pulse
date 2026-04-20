@@ -16,6 +16,19 @@ app = FastAPI(
     description="Real-time crowd intelligence and routing for large-scale venues.",
     version="1.0.0",
 )
+from google.cloud import storage
+
+@app.get("/gcp-check")
+def gcp_check():
+    try:
+        client = storage.Client()
+        buckets = list(client.list_buckets())
+        return {
+            "status": "connected to GCP",
+            "buckets": [b.name for b in buckets]
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
 
 # SECURITY: Restrict CORS in production, but open for hackathon demonstration.
 # In a real environment, ALLOWED_ORIGINS would be loaded from env variables.
