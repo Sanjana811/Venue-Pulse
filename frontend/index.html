@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Pulse | Real-Time Crowd Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header role="banner">
+            <div class="logo">
+                <span class="pulse-icon" aria-hidden="true"></span> Venue Pulse
+            </div>
+            <p>Real-Time Crowd & Route Optimization</p>
+        </header>
+
+        <main role="main">
+            <!-- ACCESSIBILITY: Section labeled for screen readers -->
+            <section class="routing-section glass-panel" aria-labelledby="routing-title">
+                <h2 id="routing-title">Find Optimal Route</h2>
+                <div class="route-form">
+                    <div class="input-group">
+                        <label for="start-node">Current Location</label>
+                        <!-- ACCESSIBILITY: Explicit id matches 'for' in label -->
+                        <select id="start-node" aria-label="Select your current location">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="end-node">Destination</label>
+                        <select id="end-node" aria-label="Select your destination">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <button id="find-route-btn" class="primary-btn" aria-label="Calculate optimal route">Get Route</button>
+                </div>
+                <!-- ACCESSIBILITY: aria-live ensures screen readers announce the result when it appears -->
+                <div id="route-result" class="hidden" aria-live="polite">
+                    <p class="time-est">Est. Time: <span id="route-time"></span> mins</p>
+                    <div class="path-visual" id="route-path" role="list" aria-label="Optimal route steps"></div>
+                </div>
+            </section>
+
+            <section class="zones-section" aria-labelledby="status-title">
+                <h2 id="status-title">Live Venue Status</h2>
+                <div class="zones-grid" id="zones-container" role="list">
+                    <!-- Cards populated by JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
